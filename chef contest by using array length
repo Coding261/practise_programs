@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+void calculate_happiness(int N, int l, int r, int A[]) {
+    int max_happiness = 0;
+    int min_happiness = 0;
+    for (int i = 0; i < N; i++) {
+        if (l <= A[i] && A[i] <= r) {
+            max_happiness++;
+            min_happiness++;
+        } else if (A[i] < l) {
+            min_happiness--;
+        } else {
+            max_happiness--;
+        }
+    }
+    printf("%d %d\n", max_happiness, min_happiness);
+}
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    for (int t = 0; t < T; t++) {
+        int N, l, r;
+        scanf("%d %d %d", &N, &l, &r);
+        int A[N];
+        for (int i = 0; i < N; i++) {
+            scanf("%d", &A[i]);
+        }
+
+        // Calculate and print happiness
+        calculate_happiness(N, l, r, A);
+    }
+
+    return 0;
+}

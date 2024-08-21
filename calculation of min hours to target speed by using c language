@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Function to determine if we can form K distinct islands in a string of length N
+int can_form_islands(int N, int K) {
+    // Calculate the minimum length required to fit K distinct islands
+    int min_length = (K * (K + 1)) / 2 + K + 1;
+    return min_length <= N;
+}
+
+int main() {
+    int T;
+    scanf("%d", &T);
+    int results[T];
+
+    for (int i = 0; i < T; i++) {
+        int N, K;
+        scanf("%d %d", &N, &K);
+        if (can_form_islands(N, K)) {
+            results[i] = 1; // YES
+        } else {
+            results[i] = 0; // NO
+        }
+    }
+
+    // Print results for all test cases
+    for (int i = 0; i < T; i++) {
+        if (results[i]) {
+            printf("YES\n");
+        } else {
+            printf("NO\n");
+        }
+    }
+
+    return 0;
+}

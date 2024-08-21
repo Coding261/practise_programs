@@ -1,0 +1,11 @@
+# Read the input value
+X = int(input())
+
+# Calculate the number of free t-shirts
+free_tshirts = X // 2
+
+# Calculate the total number of t-shirts
+total_tshirts = X + free_tshirts
+
+# Output the result
+print(total_tshirts)

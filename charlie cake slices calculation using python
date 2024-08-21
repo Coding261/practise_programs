@@ -1,0 +1,26 @@
+import math
+
+def charlie_eats_slices(A, B):
+    slices_eaten = 0
+    
+    while A != B:
+        if A > B:
+            # Charlie eats half of Alice's slices
+            to_eat = math.ceil(A / 2)
+            slices_eaten += to_eat
+            A -= to_eat
+        else:
+            # Charlie eats half of Bob's slices
+            to_eat = math.ceil(B / 2)
+            slices_eaten += to_eat
+            B -= to_eat
+    
+    return slices_eaten
+
+# Read number of test cases
+T = int(input())
+
+# Process each test case
+for _ in range(T):
+    A, B = map(int, input().split())
+    print(charlie_eats_slices(A, B))

@@ -1,0 +1,24 @@
+def generate_string(N, K):
+    # Check if it's possible to construct the string
+    if K * (K + 1) // 2 > N:
+        print("No")
+        return
+
+    # Create the string with K islands
+    remaining_length = N
+    for i in range(1, K + 1):
+        island_length = i
+        remaining_length -= island_length
+        # Print the island
+        print("0" * island_length, end="")
+        # If there's remaining length, fill with 1s
+        if remaining_length > 0:
+            print("1", end="")
+            remaining_length -= 1
+    # Fill remaining with 1s
+    print("1" * remaining_length)
+
+T = int(input())
+for _ in range(T):
+    N, K = map(int, input().split())
+    generate_string(N, K)

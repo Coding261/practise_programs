@@ -1,0 +1,54 @@
+def can_bob_win(T, test_cases):
+    results = []
+    for case in test_cases:
+        N, X, Y, S = case
+        alice_position = (0, 0)
+        
+        for i in range(N):
+            # Move Alice
+            if S[i] == 'L':
+                alice_position = (alice_position[0] - 1, alice_position[1])
+            elif S[i] == 'R':
+                alice_position = (alice_position[0] + 1, alice_position[1])
+            elif S[i] == 'U':
+                alice_position = (alice_position[0], alice_position[1] + 1)
+            elif S[i] == 'D':
+                alice_position = (alice_position[0], alice_position[1] - 1)
+            
+            # Calculate the distance to Alice's position from Bob's current position
+            distance_to_alice = (abs(alice_position[0] - X), abs(alice_position[1] - Y))
+            
+            # Bob can win if he can reach Alice's position
+            if distance_to_alice == (0, 0):
+                results.append("Yes")
+                break
+            else:
+                # Move Bob closer to Alice
+                if X < alice_position[0]:
+                    X += 1
+                elif X > alice_position[0]:
+                    X -= 1
+                
+                if Y < alice_position[1]:
+                    Y += 1
+                elif Y > alice_position[1]:
+                    Y -= 1
+                
+                if (X, Y) == alice_position:
+                    results.append("Yes")
+                    break
+        else:
+            results.append("No")
+    
+    return results
+
+# Input and output example
+T = 2
+test_cases = [
+    (5, 2, 2, "RRUUU"),
+    (4, 1, 2, "LDRR")
+]
+
+results = can_bob_win(T, test_cases)
+for result in results:
+    print(result)

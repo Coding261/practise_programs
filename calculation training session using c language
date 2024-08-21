@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+char* decide_training_session(int X, int Y) {
+    if (X > Y) {
+        return "FREEKICK";
+    } else {
+        return "PENALTY";
+    }
+}
+
+int main() {
+    int X, Y;
+    scanf("%d %d", &X, &Y);
+    
+    char* session = decide_training_session(X, Y);
+    printf("%s\n", session);
+    
+    return 0;
+}
